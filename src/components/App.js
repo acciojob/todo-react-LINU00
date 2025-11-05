@@ -1,28 +1,17 @@
+
 import React, { useState } from "react";
+import './../styles/App.css';
 import Todo from "./Todo";
-import "./styles.css";
 
-export default function App() {
- 
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (text) => {
-    const trimmed = text.trim();
-    if (!trimmed) return; 
-    setTodos((prev) => [
-      ...prev,
-      { id: Date.now(), text: trimmed }
-    ]);
-  };
-
-  const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((t) => t.id !== id));
-  };
-
+const App = () => {
+  const [todos, setTodos] = useState([])
+  const [data, setData] = useState("")
   return (
-    <div className="app">
-      <h1 className="title">To-Do List</h1>
-      <Todo todos={todos} onAdd={addTodo} onDelete={deleteTodo} />
+    <div>
+
+      <Todo todos={todos} setTodos={setTodos} data={data} setData={setData}></Todo>
     </div>
-  );
+  )
 }
+
+export default App
